@@ -23,12 +23,12 @@ for DOMAIN in $DOMAINS; do
 	if [[ -z "$REDIRECTION" ]]; then
        	if [[ "$HAS_200" -eq 1 ]]; then
 			IP=$(cat $TMP_FILE | grep connected | cut -d "|" -f2)
-			echo "$DOMAIN : $IP : $DNS" >> $OUTPUT_FILE
+			echo "$DOMAIN;$IP;$DNS" >> $OUTPUT_FILE
 		else
-			echo "$DOMAIN : KO : $DNS">> $OUTPUT_FILE
+			echo "$DOMAIN; KO;$DNS" >> $OUTPUT_FILE
 		fi
 	else
-		echo "$DOMAIN : $REDIRECTION : $DNS" >> $OUTPUT_FILE
+		echo "$DOMAIN;$REDIRECTION;$DNS" >> $OUTPUT_FILE
 	fi
 	/bin/rm -f $TMP_FILE
 	/bin/rm -f index.html*
